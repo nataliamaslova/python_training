@@ -10,7 +10,7 @@ class test_add_group(unittest.TestCase):
     
     def test_add_group(self):
         self.login(username="admin", password="secret")
-        self.return_to_groups_page()
+        self.create_group(Group(name="group 3", header="header 3", footer="footer 3"))
         self.logout()
 
     def test_add_empty_group(self):
