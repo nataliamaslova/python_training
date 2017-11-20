@@ -15,9 +15,8 @@ class test_add_contact(unittest.TestCase):
         self.wd = WebDriver(capabilities={"marionette": False})
         self.wd.implicitly_wait(60)
     
-    def test_test_add_contact(self):
+    def test_add_contact(self):
         wd = self.wd
-        self.open_home_page(wd)
         self.login(wd, username="admin", password="secret")
         self.create_contact(wd, Contact(firstname="Peter", lastname="Pyatochkin", company="System Group", address="Ukraine, Kiev, Vatslava Gavela blvd., 4",
                             mobile="+38 050 777 88 99", email="p.pyatochkin@gmail.com", year="1980"))
@@ -59,6 +58,7 @@ class test_add_contact(unittest.TestCase):
         wd.find_element_by_link_text("Logout").click()
 
     def login(self, wd, username, password):
+        self.open_home_page(wd)
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys(username)
