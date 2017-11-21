@@ -12,7 +12,7 @@ def app(request):
     return fixture
 
 def test_add_contact(app):
-    app.login(username="admin", password="secret")
+    app.session.login(username="admin", password="secret")
     app.create_contact(Contact(firstname="Peter", lastname="Pyatochkin", company="System Group", address="Ukraine, Kiev, Vatslava Gavela blvd., 4",
                         mobile="+38 050 777 88 99", email="p.pyatochkin@gmail.com", year="1980"))
-    app.logout()
+    app.session.logout()

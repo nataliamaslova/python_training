@@ -1,14 +1,12 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
+from fixture.session import SessionHelper
 
 class Application:
 
     def __init__(self):
         self.wd = WebDriver(capabilities={"marionette": False})
         self.wd.implicitly_wait(60)
-
-    def logout(self):
-        wd = self.wd
-        wd.find_element_by_link_text("Logout").click()
+        self.session = SessionHelper(self)
 
     def return_to_groups_page(self):
         wd = self.wd
