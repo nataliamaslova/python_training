@@ -7,7 +7,7 @@ class Application:
 
     def __init__(self):
         self.wd = WebDriver(capabilities={"marionette": False})
-        self.wd.implicitly_wait(5)
+#        self.wd.implicitly_wait(5) # useful when page is dynamically loaded
         self.session = SessionHelper(self)
         self.group = GroupHelper(self)
         self.contact = ContactHelper(self)
