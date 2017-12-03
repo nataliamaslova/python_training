@@ -5,8 +5,7 @@ def test_create_group(app):
     old_groups = app.group.get_group_list()
     group = Group(name="group 4", header="header 4", footer="footer 4")
     app.group.create(group)
-
-    assert len(old_groups) + 1 == app.group.count() # count used as hash function fro preliminary check
+    assert len(old_groups) + 1 == app.group.count() # count used as a hash function for preliminary check
 
     new_groups = app.group.get_group_list()
     old_groups.append(group)
