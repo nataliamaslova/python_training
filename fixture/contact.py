@@ -79,13 +79,13 @@ class ContactHelper:
 
     contact_cache = None
 
-    def get_contact_list(self, index):
+    def get_contact_list(self):
         if self.contact_cache is None:
             wd = self.app.wd
             self.open_contact_page()
             self.contact_cache = []
             rows = wd.find_elements_by_name("entry")
-            for cell in rows[index]:
+            for cell in rows:
                 id = cell.find_element_by_name("selected[]").get_attribute("value")
                 columns = cell.find_elements_by_css_selector("td")
                 lastname = columns[1].text
@@ -95,7 +95,9 @@ class ContactHelper:
                 all_emails = ''
                 if (emails.count != 0):
                     for email in emails:
+
                         all_emails = all_emails + email.text + '\n'
+                all_emails = all_emails[0:-1]
                 all_phones = columns[5].text
                 self.contact_cache.append(Contact(firstname = firstname, lastname = lastname, id = id,
                                                   address = address,
