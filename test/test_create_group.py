@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 from model.group import Group
-import pytest
-from data.create_group import constant_data as testdata
 
-@pytest.mark.parametrize("group", testdata, ids=[repr(x) for x in testdata])
-def test_create_group(app, group):
+def test_create_group(app, data_groups):
+    group = data_groups
     old_groups = app.group.get_group_list()
     app.group.create(group)
     assert len(old_groups) + 1 == app.group.count() # count used as a hash function for preliminary check
