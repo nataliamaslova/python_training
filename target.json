@@ -1,5 +1,15 @@
 {
-  "baseUrl": "http://localhost/addressbook/group.php",
-  "login": "admin",
-  "password": "secret"
+  "web": {
+    "baseUrl": "http://localhost/addressbook/group.php",
+    "login": "admin",
+    "password": "secret"
+  },
+  "db": {
+    "host": "localhost",
+    "port": "3306",
+    "database": "addressbook",
+    "user": "root",
+    "password": "",
+    "unix_socket": "/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock"
+  }
 }
