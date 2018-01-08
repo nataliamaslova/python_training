@@ -14,6 +14,7 @@ class DbFixture():
 
         self.connection = pymysql.connect(host=host, port=port, database=database,
                                           user=user, password=password, unix_socket=unix_socket)
+        # clear cache after any query
         self.connection.autocommit = True
 
     def get_group_list(self):

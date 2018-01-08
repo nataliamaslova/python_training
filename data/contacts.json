@@ -1,7 +1,7 @@
 [
   {
     "py/object": "model.contact.Contact",
-    "address": "address<9F;gcN @`h K},",
+    "address": "address<9F;gcN @h K},",
     "all_emails_from_home_page": null,
     "all_phones_from_home_page": null,
     "company": "company~zko@YXWB ",
@@ -58,7 +58,7 @@
     "address": "addressc/3_@%S .Y(H}3U %I",
     "all_emails_from_home_page": null,
     "all_phones_from_home_page": null,
-    "company": "company{cDTY\"Y9!q''B^F",
+    "company": "company{cDTYY9!qB^F",
     "email": "emailCMLmmUX",
     "email2": null,
     "email3": null,
@@ -73,7 +73,7 @@
   },
   {
     "py/object": "model.contact.Contact",
-    "address": "addressM'(}tvTrOKwz\"\"M'ka, &OEC9 FP tma ",
+    "address": "addressM(}tvTrOKwzMka, &OEC9 FP tma ",
     "all_emails_from_home_page": null,
     "all_phones_from_home_page": null,
     "company": "companySS( Y5y#z}P!",
