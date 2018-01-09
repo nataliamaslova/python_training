@@ -5,9 +5,9 @@ db = ORMFixture(host="localhost", port="3306", database="addressbook", user="roo
                unix_socket="/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock")
 
 try:
-    group_id = Group(id="228")
+    group_id = Group(id="329")
     print(group_id)
-    l = db.get_contacts_not_in_group(group_id)
+    l = db.get_contacts_in_group(group_id)
     for item in l:
         print(item)
 

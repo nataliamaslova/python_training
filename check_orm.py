@@ -5,7 +5,7 @@ db = ORMFixture(host="localhost", port="3306", database="addressbook", user="roo
 
 try:
 
-    l = db.get_group_list()
+    l = db.get_contact_list()
     for item in l:
         print(item)
 

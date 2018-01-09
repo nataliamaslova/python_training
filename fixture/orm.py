@@ -2,7 +2,7 @@ from pony.orm import *
 from datetime import datetime
 from model.group import Group
 from model.contact import Contact
-from pymysql.converters import decoders
+from pymysql.converters import encoders, decoders, convert_mysql_timestamp
 
 class ORMFixture():
 
@@ -27,8 +27,11 @@ class ORMFixture():
                        lazy=True)
 
     def __init__(self, host, port, database, user, password, unix_socket):
+        conv = encoders
+        conv.update(decoders)
+        conv[datetime] = convert_mysql_timestamp
         self.db.bind('mysql', host=host, port=port, database=database,
-                     user=user, password=password, unix_socket=unix_socket, conv=decoders)
+                     user=user, password=password, unix_socket=unix_socket, conv=conv)
         self.db.generate_mapping()
         sql_debug(True)
 

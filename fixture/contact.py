@@ -1,5 +1,6 @@
 from model.contact import Contact
 import re
+import selenium
 
 class ContactHelper:
 
@@ -10,6 +11,10 @@ class ContactHelper:
         wd = self.app.wd
         if not (wd.current_url.endswith("/index.php") and len(wd.find_elements_by_name("selected[]")) > 0):
             wd.find_element_by_link_text("home").click()
+
+    def open_group(self, id):
+        wd = self.app.wd
+        wd.find_element_by_css_selector("select[name='group']>option[value='%s']" % id).click()
 
     def create(self, contact):
         wd = self.app.wd
@@ -51,6 +56,10 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_element_by_css_selector("input[value='%s']" % id).click()
 
+    def select_group_by_id(self, id):
+        wd = self.app.wd
+        wd.find_element_by_css_selector("select[name='to_group']>option[value='%s']" % id).click()
+
     def delete_contact_by_index(self, index):
         wd = self.app.wd
         self.open_contact_page()
@@ -71,15 +80,25 @@ class ContactHelper:
         wd.switch_to_alert().accept()
         self.contact_cache = None
 
-    def delete_group_by_id(self, id):
+    def add_contact_to_group_by_ids(self, contact_id, group_id):
         wd = self.app.wd
-        self.open_groups_page()
-        self.select_group_by_id(id)
-        # submit deletion
-        wd.find_element_by_name('delete').click()
-        self.open_groups_page()
-        self.group_cache = None
+        self.open_contact_page()
+        self.select_contact_by_id(contact_id)
+        self.select_group_by_id(group_id)
+        # click on "Add to" button
+        wd.find_element_by_css_selector("input[value='Add to']").click()
+        self.open_contact_page()
+        self.contact_cache = None
 
+    def remove_contact_from_group_by_ids(self, contact_id, group_id):
+        wd = self.app.wd
+        self.open_contact_page()
+        self.open_group(group_id)
+        self.select_contact_by_id(contact_id)
+        # click on "Add to" button
+        wd.find_element_by_css_selector("input[name='remove']").click()
+        self.open_contact_page()
+        self.contact_cache = None
 
     def update_first_contact(self, new_contact_data):
         self.update_contact_by_index(0, new_contact_data)
